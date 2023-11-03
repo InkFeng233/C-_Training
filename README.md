@@ -1,2 +1,2 @@
-# C-_Training
+# C++-_Training
 Record some exercise in C++
