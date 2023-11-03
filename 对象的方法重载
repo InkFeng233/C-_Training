@@ -1,0 +1,110 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+class Circle  //圆形
+{
+private:
+	double radius;
+	const double P = 3.1415;
+public:
+	Circle()
+	{
+		cout << "请输入该圆形的半径:";
+		cin >> radius;
+	}
+	void area()
+	{
+		cout << "这个圆的面积为" << P * radius * radius << endl;
+	}
+};
+
+class Triangle  //三角形
+{
+private:
+	double a;
+	double b;
+	double c;
+public:
+	Triangle()
+	{
+		cout << "请分别输入三角形的三边" << endl;
+		cout << "a=";
+		cin >> a;
+		cout << "b=";
+		cin >> b;
+		cout << "c=";
+		cin >> c;
+	}
+	void area()
+	{
+		double s = (a + b + c) / 2.0;
+		double area = sqrt(s * (s - a) * (s - b) * (s - c));
+
+		cout << "这个三角形的面积为" << area << endl;
+	}
+	bool ValueCheck()
+	{
+		if (a > 0 && b > 0 && c > 0)
+		{
+			if (a + b > c && a + c > b && b + c > a)
+			{
+				return true;
+			}
+			else
+			{
+				cout << "对不起，这三个数不能构成一个三角形！" << endl;
+				return false;
+			}
+		}
+		else
+		{
+			cout << "对不起，数值不合法！" << endl;
+			return false;
+		}
+	}
+
+};
+
+class Rectangle  //长方形
+{
+private:
+	double m;
+	double h;
+public:
+	Rectangle()
+	{
+		cout << "请输入该长方形的长：";
+		cin >> m;
+		cout << "请输入该长方形的宽：";
+		cin >> h;
+	}
+	void area()
+	{
+		cout << "该长方形的面积为" << m * h << endl;
+	}
+};
+
+int main(void)
+{
+	//对象的创建&赋值
+	Circle c1;
+	Triangle t1;
+	Rectangle r1;
+
+	//对圆的处理
+	c1.area();
+
+	//对三角形的处理
+	if (t1.ValueCheck())
+	{
+		t1.area();
+	}
+
+	//对长方形的处理
+	r1.area();
+
+
+	return 0;
+
+}
