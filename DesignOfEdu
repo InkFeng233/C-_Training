@@ -1,0 +1,58 @@
+#include <iostream>
+#include"class_design.h"
+using namespace std;
+
+int MainMenu();
+
+int main(void)
+{
+	int num = 0;//档案个数
+	TeacherCadre* p = new TeacherCadre[num];  //动态档案的建立
+	int choice = MainMenu();
+
+	while (choice != 3)
+	{
+		if (choice == 1)
+		{
+			cout << "请输入建立档案个数：";
+			cin >> num;
+			p = new TeacherCadre[num];  //动态档案的建立
+			cout << "建立完成，为您返回主菜单！" << endl;
+	    }
+		else if(choice == 2)
+		{
+		  int flag = 0;//与指针协同-控制档案编号
+		  while (flag < num)
+		  {
+			(p + flag)->show();
+			PrintAreaLine();
+			PrintStar();
+			PrintAreaLine();
+			flag++;
+		  }
+		}
+		else
+		{
+			cout << "您输入了无效数字，请重新输入！" << endl;
+		}
+		choice = MainMenu();
+	}
+
+	delete[] p;
+	return 0;
+}
+
+int MainMenu()  //档案的主菜单
+{
+	int number;
+	PrintAreaLine();
+	cout << "欢迎访问档案系统，请选择您要执行的功能：" << endl;
+	PrintAreaLine();
+	cout << "1.查询档案" << endl;
+	cout << "2.退出系统" << endl;
+	PrintStar();
+	cout << "您的选择是：";
+	cin >> number;
+
+	return number;
+}
